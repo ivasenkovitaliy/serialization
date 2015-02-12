@@ -3,12 +3,12 @@
 namespace SerializationExample.Entities
 {
     [Serializable]
-    class Person
+    public class Person
     {
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public int Age { get; set; }
+        public DateTime Birthday { get; set; }
     }
 }
