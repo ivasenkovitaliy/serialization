@@ -36,8 +36,9 @@ namespace SerializationExample.Forms
             };
 
             //_serializator = new XmlSerializator<Person>();
+            
             _serializator = new XmlSerializator<Car>();
-            _serializator.Serialize(_person, FileName);
+            _serializator.Serialize(_car, FileName);
         }
 
         private void loadButton_Click(object sender, System.EventArgs e)
@@ -56,10 +57,10 @@ namespace SerializationExample.Forms
 
         private void ChangeSerializatorType(object sender, System.EventArgs e)
         {
-            //if (toXmlRadio.Checked)
-            //    _serializator = new XmlSerializator();
-            //else if (toBinaryRadio.Checked)
-            //    _serializator = new BinarySerializator();
+            if (toXmlRadio.Checked)
+                _serializator = new XmlSerializator<Car>();
+            else if (toBinaryRadio.Checked)
+                _serializator = new BinarySerializator<Car>();
         }
     }
 }

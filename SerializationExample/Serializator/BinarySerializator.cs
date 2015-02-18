@@ -4,29 +4,29 @@ using SerializationExample.Entities;
 
 namespace SerializationExample.Services
 {
-    /*class BinarySerializator : ISerializator<Person>
+    class BinarySerializator<T> : ISerializator<T> where T:class 
     {
-        public void Serialize(Person person, string fileName)
+        public void Serialize<T>(T val, string fileName)
         {
             var binaryFormatter = new BinaryFormatter();
 
             using (var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
             {
-                binaryFormatter.Serialize(fileStream, person);
+                binaryFormatter.Serialize(fileStream, val);
             }
         }
 
-        public Person Deserialize(string fileName)
+        public T Deserialize(string fileName)
         {
-            Person person;
+            T value;
             var binaryFormatter = new BinaryFormatter();
 
             using (var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
-                person = (Person) binaryFormatter.Deserialize(fileStream);
+                value = (T) binaryFormatter.Deserialize(fileStream);
             }
 
-            return person;
+            return value;
         }
-    }*/
+    }
 }
