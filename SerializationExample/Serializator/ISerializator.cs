@@ -2,7 +2,7 @@
 {
     interface ISerializator<T>
     {
-        void Serialize(T objectToSerialize, string fileName);
+        void Serialize<T>(T objectToSerialize, string fileName);
 
         T Deserialize(string fileName);
     }

@@ -4,7 +4,7 @@ using SerializationExample.Entities;
 
 namespace SerializationExample.Services
 {
-    class BinarySerializator : ISerializator<Person>
+    /*class BinarySerializator : ISerializator<Person>
     {
         public void Serialize(Person person, string fileName)
         {
@@ -28,5 +28,5 @@ namespace SerializationExample.Services
 
             return person;
         }
-    }
+    }*/
 }

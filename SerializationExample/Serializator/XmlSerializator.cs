@@ -7,14 +7,14 @@ using SerializationExample.Services;
 
 namespace SerializationExample.Serializator
 {
-    class XmlSerializator : ISerializator<Person>
+    class XmlSerializator<T> : ISerializator<T> where T : class
     {
-        public void Serialize(Person person, string fileName)
+        public void Serialize<T>(T val, string fileName)
         {
-            var xsSubmit = new XmlSerializer(typeof(Person));
+            var xsSubmit = new XmlSerializer(typeof(T));
             var stringWriter = new StringWriter();
             var writer = XmlWriter.Create(stringWriter);
-            xsSubmit.Serialize(writer, person);
+            xsSubmit.Serialize(writer, val);
             var xml = stringWriter.ToString();
 
             using (var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
@@ -27,16 +27,16 @@ namespace SerializationExample.Serializator
             }
         }
 
-        public Person Deserialize(string fileName)
+        public T Deserialize(string fileName)
         {
-            Person person;
+            T value;
             using (var stream = System.IO.File.OpenRead(fileName))
             {
-                var serializer = new XmlSerializer(typeof(Person));
-                person = serializer.Deserialize(stream) as Person;
+                var serializer = new XmlSerializer(typeof(T));
+                value = serializer.Deserialize(stream) as T;
             }
 
-            return person;
+            return value;
         }
     }
 }
